@@ -33,6 +33,9 @@ body {
   background: var(--bg);
   transition: background 0.3s, color 0.3s;
 }
+body, .site-header, .site-footer, .section, .hero, .container {
+  transition: background 0.5s cubic-bezier(0.4,0,0.2,1), color 0.5s cubic-bezier(0.4,0,0.2,1);
+}
 
 .container {
   width: 90%;
@@ -114,6 +117,54 @@ body {
 @keyframes float {
   0%, 100% { transform: translateY(0) scale(1); }
   50% { transform: translateY(-30px) scale(1.08); }
+}
+
+/* Animated fade-in */
+.animated-fadein {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 1s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Animated slide-up for hero text */
+.animated-slideup {
+  opacity: 0;
+  transform: translateY(40px);
+  animation: slideUp 1.2s 0.2s cubic-bezier(0.4,0,0.2,1) forwards;
+}
+@keyframes slideUp {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Animated avatar (pulse) */
+.animated-avatar {
+  animation: avatarPulse 2.5s infinite alternate;
+}
+@keyframes avatarPulse {
+  0% { box-shadow: 0 0 0 0 rgba(0,0,0,0.1); }
+  100% { box-shadow: 0 0 30px 10px rgba(0,0,0,0.08); }
+}
+
+/* Animated background shapes */
+.animated-shape {
+  animation: floatShape 6s ease-in-out infinite alternate;
+}
+.shape1 { animation-delay: 0s; }
+.shape2 { animation-delay: 1.5s; }
+.shape3 { animation-delay: 3s; }
+@keyframes floatShape {
+  0% { transform: translateY(0) scale(1); }
+  100% { transform: translateY(-20px) scale(1.05); }
 }
 
 /* Card Styles for Projects/Experience */
@@ -289,6 +340,26 @@ h2 {
 .reveal.visible {
   opacity: 1;
   transform: none;
+}
+
+/* Tech stack icons */
+.skill-list i, .project em i {
+  font-size: 1.5em;
+  margin: 0 0.2em;
+  vertical-align: middle;
+  transition: transform 0.2s;
+}
+.skill-list i:hover, .project em i:hover {
+  transform: scale(1.2) rotate(-8deg);
+}
+
+/* Performance: lazy loading for images */
+img[loading="lazy"] {
+  filter: blur(0.5px);
+  transition: filter 0.3s;
+}
+img[loading="lazy"].loaded {
+  filter: none;
 }
 
 /* Responsive Nav */

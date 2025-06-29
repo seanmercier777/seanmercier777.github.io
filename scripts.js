@@ -38,6 +38,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // On load, set mode from localStorage
   setMode(localStorage.getItem('darkMode') === '1');
 
+  // Smooth dark/light mode transition
+  document.body.style.transition = 'background 0.5s cubic-bezier(0.4,0,0.2,1), color 0.5s cubic-bezier(0.4,0,0.2,1)';
+
   // Scroll to top button
   window.addEventListener('scroll', () => {
     if (window.scrollY > 300) {
@@ -65,4 +68,25 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   window.addEventListener('scroll', revealOnScroll);
   revealOnScroll();
+
+  // Animate fade-in for sections and projects on scroll
+  const animatedEls = document.querySelectorAll('.animated-fadein, .animated-slideup, .project');
+  function animateOnScroll() {
+    const trigger = window.innerHeight * 0.92;
+    animatedEls.forEach(el => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < trigger) {
+        el.classList.add('visible');
+      } else {
+        el.classList.remove('visible');
+      }
+    });
+  }
+  window.addEventListener('scroll', animateOnScroll);
+  animateOnScroll();
+
+  // Performance: mark lazy images as loaded
+  document.querySelectorAll('img[loading="lazy"]').forEach(img => {
+    img.addEventListener('load', () => img.classList.add('loaded'));
+  });
 });
