@@ -310,3 +310,18 @@ h2 {
   .site-nav.open { transform: translateX(0); }
   .site-nav ul { flex-direction: column; padding: 1rem; }
 }
+body.dark-mode .section,
+body.dark-mode .section:nth-of-type(even) {
+  background: var(--light);
+  color: var(--text);
+}
+body.dark-mode .skill-list li {
+  color: var(--text);
+}
+body.dark-mode .cta-btn {
+  color: var(--light);
+  background: var(--cta);
+}
+body.dark-mode .cta-btn:hover {
+  background: var(--cta-hover);
+}
