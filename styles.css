@@ -14,6 +14,7 @@ body.dark-mode {
   --text: #f5f7fa;
   --accent: #38ada9;
   --light: #23283a;
+  --dark: #fff;
   --card: #23283a;
   --card-shadow: 0 4px 24px rgba(56,173,169,0.08);
   --cta: #0a3d62;
@@ -319,7 +320,7 @@ body.dark-mode .skill-list li {
   color: var(--text);
 }
 body.dark-mode .cta-btn {
-  color: var(--light);
+  color: var(--dark);
   background: var(--cta);
 }
 body.dark-mode .cta-btn:hover {
